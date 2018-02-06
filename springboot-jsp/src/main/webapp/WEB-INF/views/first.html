@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name=viewport content="width=device-width">
+<title>微信网页</title>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		// 根据实际填写接口的配置地点     // 这里的接口地址是基于node-weixin配置的。    
+		var url = "/jssdk/config";
+		// 当前的网页请求地址     
+		var weixinUrl = location.href.split('#')[0];
+		$.ajax({
+			url : url, //这个地址是服务器配置JSSDK的地址       
+			data : {
+				// 这个地址是发生jssdk调用的url地址           // 用于服务器配置              
+				url : weixinUrl
+			}
+		}).success(function(json) {
+			// 获得服务器返回的配置信息      
+			var data = json.data;
+			var config = {};
+			for ( var k in json.data) {
+				config[k] = json.data[k];
+			}
+			// config.debug = true;        // 添加你需要的JSSDK的权限      
+			config.jsApiList = [ 'checkJsApi', 'scanQRCode' ];
+			config.timestamp = parseInt(config.timestamp);
+			wx.config(config);
+			wx.ready(function() {
+				alert("微信jssdk配置成功!");
+			});
+			wx.error(function(res) {
+				alert('微信JSSDK配置失败！');
+			});
+		});
+	});
+	
+	
+	function() {   
+		$('.qrcode').click(function () {     
+			wx.scanQRCode({       
+				// 默认为0，扫描效果由微信处理，1则直接返回扫描结果，      
+				needResult: 1,        
+				// 可以指定扫二维码还是一维码，默认二者都有       
+				scanType: ["qrCode", "barCode"],        
+				success: function (res) {         
+					// 当needResult 为 1 时，扫码返回的结果         
+					var result = res.resultStr;          
+					alert(result);      
+					}     
+			}); 
+			}); 
+		}
+	
+</script>
+
+
+</head>
+<body>
+	<h1>微信JSSDK网页</h1>
+
+	<h2 class="qrcode">点击扫描</h2>
+
+
+</body>
+</html>
