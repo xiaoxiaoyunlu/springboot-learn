@@ -1,0 +1,84 @@
+boby,div,ul,ol,li,dl,dt,th,form,input,textarea,p{
+	margin:0px;
+	padding:0px;
+	font-size:15px;
+	font-family:微软雅黑;
+}
+
+td{
+	padding-bottom: 10px
+}
+
+/* 后台通用的一些CSS，用于区分easyui默认样式 */  
+.cmp-list-body {
+	width: 98%;
+	margin: 0 auto;
+	padding: 10px;
+	text-align: left;
+}
+/** 右上角删除和编辑图标按钮 */
+.btn-icon {
+	display: none;
+	cursor: pointer;
+	width: 16px;
+	height: 16px;
+	text-indent: -999em;
+	overflow: hidden;
+	position: absolute;
+}
+.hover .btn-icon {
+	display: block;
+	text-decoration: none;
+}
+.modify-link {
+	right: 25px;
+	top: 0px;
+	background: transparent url("/resources/image/pencil.png") no-repeat center top;
+}
+.delete-link {
+	right: 0px;
+	top: 0px;
+	background: transparent url("/resources/image/cancel.png") no-repeat center top;
+}
+
+/** 右下角滚动条样式 */
+#dynamic-to-top {
+    background: url(../image/top.gif) repeat scroll 0 0 transparent;
+    bottom: 20px;
+    display: none;
+    height: 44px;
+    left: auto;
+    position: fixed;
+    right: 18px;
+    top: auto;
+    width: 44px;
+    z-index: 90;
+}
+
+.edit{
+	font-size: 15px;
+	font-weight:bold;
+	font-family:微软雅黑;
+}
+
+.formStyle{
+	display:inline;
+	padding-left: 20px
+}
+
+
+.datagrid-header, .datagrid-toolbar, .datagrid-pager, .datagrid-footer-inner {
+    border-color: #acd6ff;
+}
+.datagrid-toolbar, .datagrid-pager {
+    background: #c4e1ff none repeat scroll 0 0;
+    padding-left: 10px;
+}
+
+.buttonStyle{
+	color:#6C6C6C;
+	font-size: 16px;
+	font-weight: bold;
+	font-family: '华文细黑';
+}
+

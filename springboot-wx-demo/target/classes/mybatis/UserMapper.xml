@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.zsy.WXDemo.mapper.UserMapper">
+
+   <insert id="save" parameterType="User" keyProperty="id"  useGeneratedKeys="true">
+         insert into t_user(
+             open_id,user_name,
+             phone,address,
+             type,count,
+             create_time,modify_time
+         )values(
+            #{open_id},#{user_name},
+            #{phone},#{address},
+            #{type},#{count},
+            NOW(),NOW()
+         )
+   </insert>
+   
+   <select id="checkRegister" parameterType="string" resultType="int"> 
+       select count(1) 
+       from t_user
+       where open_id=#{open_id}
+   </select>
+
+</mapper>  
